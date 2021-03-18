@@ -1,0 +1,82 @@
+:root {
+  --font1: "DotGothic16", sans-serif;
+  --font2: "Raleway", sans-serif;
+}
+
+body {
+  background: url(../../images/background-whackamole.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  font-family: var(--font1);
+}
+
+#home {
+  font-size: 3rem;
+  color: #eee;
+  transition: transform 300ms ease;
+  align-self: top;
+  margin: 0 2rem;
+}
+
+#home:hover {
+  transform: scale(1.1);
+}
+
+.sky {
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  font-size: 3rem;
+  align-items: flex-start;
+  margin: 0vh 5vw 20vh 0vw;
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  width: 100vw;
+  justify-content: space-around;
+  grid-gap: 1.5rem;
+}
+.hole {
+  text-align: center;
+
+  height: 10vh;
+  width: 10vw;
+  border-radius: 50%;
+  background: linear-gradient(0deg, #000, #310, #a0522d);
+}
+.mole {
+  width: 70%;
+  height: 100%;
+  opacity: 0.76;
+}
+
+img::selection {
+  color: none;
+  background: none;
+}
+
+button {
+  background: #557;
+  color: white;
+  font-family: var(--font2);
+  font-size: 3rem;
+  border: solid 0px white;
+  border-radius: 0.5rem;
+  padding: 0.3rem 2rem 0.3rem 2rem;
+  transition: transform 300ms ease;
+  margin-top: 2rem;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.stop {
+  display: none;
+}
