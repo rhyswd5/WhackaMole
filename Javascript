@@ -1,0 +1,58 @@
+const timer = document.querySelector(".timer");
+const score = document.querySelector(".score");
+const hole = document.querySelectorAll(".hole");
+
+function start() {
+  document.querySelector(".start").style.display = "none";
+
+  let result = 0;
+  let currentTime = 60;
+
+  score.textContent = `Score: ${result}`;
+  timer.textContent = `Time: ${currentTime}`;
+
+  //resets each hole and picks a random hole for the mole to appear in
+  const holeSelector = () => {
+    hole.forEach((hole) => {
+      hole.innerHTML = "";
+    });
+
+    randomID = Math.floor(Math.random() * 11);
+    let randomHole = document.getElementById(`${randomID}`);
+    randomHole.innerHTML = "<img class='mole' src='../../images/mole.png' />";
+    moleID = randomHole.id;
+  };
+
+  //detects if a hole is clicked on and if that hole has a mole.
+  hole.forEach((id) => {
+    id.addEventListener("mousedown", () => {
+      if (id.id == moleID) {
+        result++;
+        score.textContent = `Score: ${result}`;
+        moleClicked();
+      }
+    });
+  });
+
+  let moveMole = setInterval(holeSelector, 700);
+
+  //resets the mole if it is clicked
+  const moleClicked = () => {
+    clearInterval(moveMole);
+    holeSelector();
+    moveMole = setInterval(holeSelector, 700);
+  };
+
+  //counts down and checks if time has run out
+  const countDown = () => {
+    currentTime--;
+    timer.textContent = `Time: ${currentTime}`;
+    if (currentTime == 0) {
+      clearInterval(t);
+      clearInterval(moveMole);
+      alert(`Game Over! Final Score: ${result}`);
+      document.querySelector(".stop").style.display = "block";
+    }
+  };
+  let t = setInterval(countDown, 1000);
+}
